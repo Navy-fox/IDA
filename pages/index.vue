@@ -1,12 +1,12 @@
 <template>
-  <div class='test'>test text</div>
+  <div :class='$style.test'>test text</div>
 </template>
 
 <script>
 export default {}
 </script>
 
-<style lang='scss'>
+<style module lang='scss'>
 .test {
   color: $red;
 }

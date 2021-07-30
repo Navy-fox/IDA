@@ -47,5 +47,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      cssModules: {
+        modules: {
+          localIdentName: "[local]--[Frida]_[hash:base64:4]",
+        }
+      }
+    },
   }
 }
