@@ -1,0 +1,22 @@
+@mixin wrapper() {
+  padding-left: 88px;
+  padding-right: 88px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@mixin font($font-size, $color) {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: $font-size;
+  color: $color;
+}
+
+@mixin font-bold($font-size, $color) {
+  font-family: $font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: $font-size;
+  color: $color;
+}
