@@ -1,13 +1,15 @@
 <template>
-  <div :class='$style.test'>test text</div>
+    <Card />
 </template>
 
 <script>
-export default {}
+import Card from '~/components/Card'
+
+export default {
+  components: { Card }
+}
 </script>
 
 <style module lang='scss'>
-.test {
-  color: $red;
-}
+
 </style>
