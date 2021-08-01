@@ -41,8 +41,7 @@ export default {
   background: $light;
   box-shadow: $shadow-bottom;
   border-radius: 8px;
-  width: 264px;
-  height: 272px;
+  min-height: 272px;
   position: relative;
 
   &__name {
@@ -50,7 +49,8 @@ export default {
   }
 
   &__price {
-    @include font-bold(14px, $dark)
+    @include font-bold(14px, $dark);
+    margin-top: auto;
   }
 }
 

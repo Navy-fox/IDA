@@ -2,7 +2,7 @@
   <cart-wrapper :class='$style.opacity'>
     <div :class='$style.cart'>
       <button :class='$style["cart__close"]' @click='closeCart'>
-        <img src='img/close.svg' alt=''>
+        <img src='/img/close.svg' alt=''>
       </button>
       <p :class='$style.title'>Корзина</p>
       <CartProduct />

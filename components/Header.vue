@@ -2,7 +2,7 @@
   <div :class='$style.wrapper'>
     <p :class='$style.logo'>TestList</p>
     <button :class='$style.cart' @click='openCart'>
-      <img src='img/cart.svg' alt=''>
+      <img src='/img/cart.svg' alt=''>
       <span :class='$style["cart__count"]'>3</span>
     </button>
   </div>
@@ -22,6 +22,7 @@ export default {
 <style module lang='scss'>
 .wrapper {
   @include wrapper();
+  max-width: none;
   padding-top: 17px;
   padding-bottom: 17px;
   background: $light;
