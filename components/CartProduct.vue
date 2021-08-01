@@ -1,21 +1,48 @@
 <template>
   <div :class='$style["card-product"]'>
-    <img :class='$style.photo' src='img/louis-vuitton--M43186_PM2_Front%20view%201.png' alt=''>
+    <img
+      :class='$style.photo'
+      :src='`https://frontend-test.idaproject.com${product.photo}`'
+      alt=''
+    >
     <div :class='$style.info'>
-      <p :class='$style.name'>Рюкзак Louis Vuitton Discovery</p>
-      <p :class='$style.price'>150 000 ₽</p>
+      <p :class='$style.name'>{{ product.name }}</p>
+      <p :class='$style.price'>{{ product.price }} ₽</p>
       <div :class='$style.rating'>
-        <img src='img/star.svg' alt=''>
-        <p :class='$style["rating__num"]'>4.5</p>
+        <img src='/img/star.svg' alt=''>
+        <p :class='$style["rating__num"]'>{{ product.rating }}</p>
       </div>
     </div>
-    <img :class='$style.trash' src='img/trash.svg' alt=''>
+    <img
+      :class='$style.trash'
+      src='/img/trash.svg'
+      alt=''
+      @click='removeProduct'
+    >
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CartProduct'
+  name: 'CartProduct',
+  props: {
+    product: {
+      type: Object,
+      required: true,
+      default: () => ({
+        id: 0,
+        name: '',
+        photo: '',
+        price: 0,
+        rating: 0
+      })
+    }
+  },
+  methods: {
+    removeProduct(){
+      this.$store.commit('cart/removeProduct', this.product)
+    }
+  }
 }
 </script>
 
@@ -39,7 +66,7 @@ export default {
 }
 
 .photo {
-  width: 70px;
+  width: 90px;
   height: 90px;
 }
 
@@ -65,5 +92,6 @@ export default {
   width: 32px;
   height: 32px;
   cursor: pointer;
+  margin-left: auto;
 }
 </style>

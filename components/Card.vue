@@ -5,7 +5,10 @@
       <p :class='$style["rating__num"]'>{{ product.rating }}</p>
     </div>
     <img :class='$style.photo' :src='`https://frontend-test.idaproject.com${product.photo}`' alt=''>
-    <button :class='$style.cart'>
+    <button
+      :class='$style.cart'
+      @click='addProduct'
+    >
       <img src='/img/cart.svg' alt=''>
     </button>
     <p :class='$style["card__name"]'>{{ product.name }}</p>
@@ -29,6 +32,11 @@ export default {
       })
     },
   },
+  methods: {
+    addProduct(){
+      this.$store.commit('cart/addProduct', this.product)
+    }
+  }
 }
 </script>
 

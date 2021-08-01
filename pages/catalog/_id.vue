@@ -5,7 +5,12 @@
       :options='options'
     />
     <div :class='$style["wall-card"]'>
-      <Card v-for='(item, key) in sortProducts' :key='key' :product='item' :class='$style["wall-card__item"]'/>
+      <Card
+        v-for='(item, key) in sortProducts'
+        :key='key'
+        :product='item'
+        :class='$style["wall-card__item"]'
+      />
     </div>
   </div>
 </template>

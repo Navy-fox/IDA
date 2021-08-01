@@ -3,7 +3,12 @@
     <p :class='$style.logo'>TestList</p>
     <button :class='$style.cart' @click='openCart'>
       <img src='/img/cart.svg' alt=''>
-      <span :class='$style["cart__count"]'>3</span>
+      <span
+        v-if='products.length'
+        :class='$style["cart__count"]'
+      >
+        {{ products.length }}
+      </span>
     </button>
   </div>
 </template>
@@ -11,6 +16,11 @@
 <script>
 export default {
   name: 'Header',
+  computed:{
+    products() {
+      return this.$store.state.cart.products || [];
+    }
+  },
   methods:{
     openCart(){
       this.$store.commit("cart/toggleIsOpen",true)
