@@ -1,21 +1,34 @@
 <template>
   <div :class='$style.card'>
     <div :class='$style.rating'>
-      <img src='img/star.svg' alt=''>
-      <p :class='$style["rating__num"]'>4.5</p>
+      <img src='/img/star.svg' alt=''>
+      <p :class='$style["rating__num"]'>{{ product.rating }}</p>
     </div>
-    <img :class='$style.photo' src='img/louis-vuitton--M43186_PM2_Front%20view%201.png' alt=''>
+    <img :class='$style.photo' :src='`https://frontend-test.idaproject.com${product.photo}`' alt=''>
     <button :class='$style.cart'>
-      <img src='img/cart.svg' alt=''>
+      <img src='/img/cart.svg' alt=''>
     </button>
-    <p :class='$style["card__name"]'>Рюкзак Louis Vuitton Discovery</p>
-    <p :class='$style["card__price"]'>150 000 ₽</p>
+    <p :class='$style["card__name"]'>{{ product.name }}</p>
+    <p :class='$style["card__price"]'>{{ product.price }} ₽</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
+  props: {
+    product: {
+      type: Object,
+      required: true,
+      default: () => ({
+        id: 0,
+        name: '',
+        photo: '',
+        price: 0,
+        rating: 0
+      })
+    },
+  },
 }
 </script>
 
@@ -66,8 +79,8 @@ export default {
 }
 
 .photo {
-  max-width: 143px;
-  max-height: 180px;
+  width: 180px;
+  height: 180px;
   align-self: center;
   margin-top: 2px;
   margin-bottom: 10px;

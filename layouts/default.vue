@@ -29,6 +29,9 @@ export default {
 <style module lang='scss'>
 .wrapper {
   @include wrapper();
-
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 10px;
+  padding-top: 32px;
 }
 </style>

@@ -2,14 +2,13 @@
   <div :class='$style["aside-menu"]'>
     <h2 :class='$style.title'>Каталог</h2>
     <nav :class='$style.nav'>
-      <nuxt-link to='/catalog/1' :class='$style["nav__item"]' :exact-active-class='$style["nav__item--active"]'>
-        Рюкзаки
-      </nuxt-link>
-      <nuxt-link to='/catalog/2' :class='$style["nav__item"]' :exact-active-class='$style["nav__item--active"]'>
-        Футболки
-      </nuxt-link>
-      <nuxt-link to='/catalog/3' :class='$style["nav__item"]' :exact-active-class='$style["nav__item--active"]'>
-        Рубашки
+      <nuxt-link
+        v-for='(item, key) in productCategory' :key='key'
+        :to='`/catalog/${item.id}`'
+        :class='$style["nav__item"]'
+        :exact-active-class='$style["nav__item--active"]'
+      >
+        {{ item.name}}
       </nuxt-link>
     </nav>
   </div>
@@ -17,7 +16,15 @@
 
 <script>
 export default {
-  name: 'AsideMenu'
+  name: 'AsideMenu',
+  data() {
+    return {
+      productCategory: []
+    }
+  },
+  mounted() {
+    this.$axios.get('https://frontend-test.idaproject.com/api/product-category').then(response => (this.productCategory = response.data))
+  }
 }
 </script>
 
