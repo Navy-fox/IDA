@@ -23,8 +23,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/Vuelidate.js'},
-    { src: '~/plugins/persistedState.client.js' }
+    { src: '~/plugins/Vuelidate.js' },
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~/plugins/vMask.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -33,7 +34,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,9 +54,9 @@ export default {
     loaders: {
       cssModules: {
         modules: {
-          localIdentName: "[local]--[Frida]_[hash:base64:4]",
+          localIdentName: '[local]--[Frida]_[hash:base64:4]'
         }
       }
-    },
+    }
   }
 }

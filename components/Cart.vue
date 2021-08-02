@@ -31,7 +31,7 @@
             :key='key'
             :product='product'
           />
-          <input-order @send='send' />
+          <form-order @send='send'></form-order>
         </div>
       </template>
     </div>
@@ -41,12 +41,13 @@
 <script>
 import CartProduct from '~/components/CartProduct'
 import CartWrapper from '~/components/CartWrapper'
-import InputOrder from '~/components/InputOrder'
+
 import OkHandCart from '~/components/OkHandCart'
+import FormOrder from '~/components/FormOrder'
 
 export default {
   name: 'Cart',
-  components: { OkHandCart, InputOrder, CartWrapper, CartProduct },
+  components: { FormOrder, OkHandCart,  CartWrapper, CartProduct },
   data: () => ({
     isOk: false
   }),

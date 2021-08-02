@@ -8,7 +8,8 @@
       placeholder='Ваше имя'
     >
     <input
-      v-model.number='phone'
+      v-model='phone'
+      v-mask='mask'
       :class='`${$style.input} ${$v.phone.$dirty && $v.phone.$invalid ? $style["input--error"] : " "}`'
       type='text'
       placeholder='Телефон'
@@ -24,13 +25,13 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
-  name: 'InputOrder',
+  name: 'FormOrder',
   data() {
     return {
-      errors: [],
+      mask: ['+7 (', /\d/, /\d/, /\d/, ') ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/],
       name: '',
       phone: '',
       address: ''
@@ -51,7 +52,8 @@ export default {
       required
     },
     phone: {
-      required
+      required,
+      minLength: minLength(18)
     },
     address: {
       required
