@@ -56,7 +56,7 @@ export default {
 .catalog {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   padding-top: 10px;
   gap: 34px;
 }

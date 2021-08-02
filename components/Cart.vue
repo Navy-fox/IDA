@@ -34,8 +34,6 @@
           <input-order @send='send' />
         </div>
       </template>
-
-
     </div>
   </cart-wrapper>
 </template>

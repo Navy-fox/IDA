@@ -13,9 +13,6 @@ export const mutations = {
     if (product) {
       const index = state.products.findIndex(i => i.id === product.id)
       state.products.splice(index, 1)
-      // const products = [...state.products]
-      // delete products[index]
-      // state.products = products.filter(i => !!i)
     }
   },
   toggleIsOpen(state, val) {
