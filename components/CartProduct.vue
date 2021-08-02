@@ -13,18 +13,21 @@
         <p :class='$style["rating__num"]'>{{ product.rating }}</p>
       </div>
     </div>
-    <img
-      :class='$style.trash'
-      src='/img/trash.svg'
-      alt=''
-      @click='removeProduct'
-    >
+    <icon-trash @click.native='removeProduct'/>
+<!--    <img-->
+<!--      :class='$style.trash'-->
+<!--      src='/img/trash.svg'-->
+<!--      alt=''-->
+<!--      @click='removeProduct'-->
+<!--    >-->
   </div>
 </template>
 
 <script>
+import IconTrash from '~/components/icons/IconTrash'
 export default {
   name: 'CartProduct',
+  components: { IconTrash },
   props: {
     product: {
       type: Object,
@@ -40,6 +43,7 @@ export default {
   },
   methods: {
     removeProduct(){
+      console.log('123')
       this.$store.commit('cart/removeProduct', this.product)
     },
     numberWithCommas(value) {
@@ -89,12 +93,5 @@ export default {
   &__num {
     @include font-bold(10px, $yellow);
   }
-}
-
-.trash {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  margin-left: auto;
 }
 </style>

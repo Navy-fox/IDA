@@ -1,7 +1,7 @@
 <template>
   <div :class='$style.card'>
     <div :class='$style.rating'>
-      <img src='/img/star.svg' alt=''>
+      <icon-star :rating='product.rating'/>
       <p :class='$style["rating__num"]'>{{ product.rating }}</p>
     </div>
     <img :class='$style.photo' :src='`https://frontend-test.idaproject.com${product.photo}`' alt=''>
@@ -9,7 +9,7 @@
       :class='$style.cart'
       @click='addProduct'
     >
-      <img src='/img/cart.svg' alt=''>
+      <icon-cart />
     </button>
     <p :class='$style["card__name"]'>{{ product.name }}</p>
     <p :class='$style["card__price"]'>{{ numberWithCommas(product.price) }} ₽</p>
@@ -17,8 +17,12 @@
 </template>
 
 <script>
+import IconCart from '~/components/icons/IconCart'
+import IconStar from '~/components/icons/IconStar'
+
 export default {
   name: 'Card',
+  components: { IconStar, IconCart },
   props: {
     product: {
       type: Object,
@@ -30,15 +34,15 @@ export default {
         price: 0,
         rating: 0
       })
-    },
+    }
   },
   methods: {
-    addProduct(){
+    addProduct() {
       this.$store.commit('cart/addProduct', this.product)
     },
     numberWithCommas(value) {
-      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    },
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+    }
   }
 }
 </script>
@@ -70,11 +74,6 @@ export default {
   top: 16px;
   right: 16px;
   cursor: pointer;
-  img {
-    color: $grey-extra-light;
-    width: 16px;
-    height: 16px;
-  }
 }
 
 .rating {
