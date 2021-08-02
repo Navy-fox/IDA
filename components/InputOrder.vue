@@ -1,9 +1,24 @@
 <template>
   <div :class='$style["input-order"]'>
     <p :class='$style.title'>Оформить заказ</p>
-    <input v-model='name' :class='$style.input' type='text' placeholder='Ваше имя'>
-    <input v-model='phone' :class='$style.input' type='text' placeholder='Телефон'>
-    <input v-model='address' :class='$style.input' type='text' placeholder='Адрес'>
+    <input
+      v-model='name'
+      :class='`${$style.input} ${$v.name.$dirty && $v.name.$invalid ? $style["input--error"] : " "}`'
+      type='text'
+      placeholder='Ваше имя'
+    >
+    <input
+      v-model.number='phone'
+      :class='`${$style.input} ${$v.phone.$dirty && $v.phone.$invalid ? $style["input--error"] : " "}`'
+      type='text'
+      placeholder='Телефон'
+    >
+    <input
+      v-model='address'
+      :class='`${$style.input} ${$v.address.$dirty && $v.address.$invalid ? $style["input--error"] : " "}`'
+      type='text'
+      placeholder='Адрес'
+    >
     <button :class='$style.but' @click='sendForm'>Отправить</button>
   </div>
 </template>
@@ -73,6 +88,11 @@ export default {
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+
+  &--error {
+    border: 1px solid #EB5757;
+    box-shadow: 0 0 7px rgba(235, 87, 87, 0.5);
+  }
 }
 
 .but {
@@ -80,5 +100,6 @@ export default {
   @include button();
   margin-top: 8px;
 }
+
 
 </style>
