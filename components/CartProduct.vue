@@ -7,7 +7,7 @@
     >
     <div :class='$style.info'>
       <p :class='$style.name'>{{ product.name }}</p>
-      <p :class='$style.price'>{{ product.price }} ₽</p>
+      <p :class='$style.price'>{{ numberWithCommas(product.price) }} ₽</p>
       <div :class='$style.rating'>
         <img src='/img/star.svg' alt=''>
         <p :class='$style["rating__num"]'>{{ product.rating }}</p>
@@ -41,7 +41,10 @@ export default {
   methods: {
     removeProduct(){
       this.$store.commit('cart/removeProduct', this.product)
-    }
+    },
+    numberWithCommas(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    },
   }
 }
 </script>

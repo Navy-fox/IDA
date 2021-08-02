@@ -12,7 +12,7 @@
       <img src='/img/cart.svg' alt=''>
     </button>
     <p :class='$style["card__name"]'>{{ product.name }}</p>
-    <p :class='$style["card__price"]'>{{ product.price }} ₽</p>
+    <p :class='$style["card__price"]'>{{ numberWithCommas(product.price) }} ₽</p>
   </div>
 </template>
 
@@ -35,7 +35,10 @@ export default {
   methods: {
     addProduct(){
       this.$store.commit('cart/addProduct', this.product)
-    }
+    },
+    numberWithCommas(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    },
   }
 }
 </script>
